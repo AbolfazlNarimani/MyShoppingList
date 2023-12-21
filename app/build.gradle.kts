@@ -76,16 +76,26 @@ dependencies {
     testImplementation("com.google.truth:truth:1.1.4")
 
     // test Imp
-    testImplementation("android.arch.core:core-testing:1.1.1")
-    androidTestImplementation("android.arch.core:core-testing:1.1.1")
+    testImplementation("androidx.arch.core:core-common:2.2.0")
+    testImplementation("androidx.arch.core:core-runtime:2.2.0")
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+    androidTestImplementation("androidx.arch.core:core-common:2.2.0")
+    androidTestImplementation("androidx.arch.core:core-runtime:2.2.0")
+    androidTestImplementation("androidx.arch.core:core-testing:2.2.0")
+    // Mock
+    testImplementation("io.mockk:mockk:1.13.5")
+    androidTestImplementation("io.mockk:mockk-android:1.13.5")
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-android-compiler:2.48")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
+
     //retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+
 
 }

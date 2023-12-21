@@ -2,8 +2,10 @@ package com.example.myshoppinglist.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.myshoppinglist.data.local.ShoppingDao
 import com.example.myshoppinglist.data.local.ShoppingItemDatabase
 import com.example.myshoppinglist.remote.PixelBayApi
+import com.example.myshoppinglist.repo.ShoppingRepository
 import com.example.myshoppinglist.util.Constants.BASE_URL
 import com.example.myshoppinglist.util.Constants.DATABASE_NAME
 import dagger.Module
@@ -39,5 +41,13 @@ object AppModule {
             .build()
             .create(PixelBayApi::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun provideDefaultShoppingRepository(
+        dao: ShoppingDao,
+        api: PixelBayApi
+    ): ShoppingRepository = provideDefaultShoppingRepository(dao, api) as ShoppingRepository
+
 
 }

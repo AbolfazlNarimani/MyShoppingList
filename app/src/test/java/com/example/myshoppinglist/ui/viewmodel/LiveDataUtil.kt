@@ -1,4 +1,4 @@
-package com.example.myshoppinglist
+package com.example.myshoppinglist.ui.viewmodel
 
 /*
  * Copyright (C) 2019 The Android Open Source Project
@@ -30,7 +30,7 @@ import java.util.concurrent.TimeoutException
  * `InstantTaskExecutorRule` or a similar mechanism to execute tasks synchronously.
  */
 @VisibleForTesting(otherwise = VisibleForTesting.NONE)
-fun <T> LiveData<T>.getOrAwaitValue(
+fun <T> LiveData<T>.getOrAwaitValueTest(
     time: Long = 2,
     timeUnit: TimeUnit = TimeUnit.SECONDS,
     afterObserve: () -> Unit = {}
@@ -41,7 +41,7 @@ fun <T> LiveData<T>.getOrAwaitValue(
         override fun onChanged(o: T) {
             data = o
             latch.countDown()
-            this@getOrAwaitValue.removeObserver(this)
+            this@getOrAwaitValueTest.removeObserver(this)
         }
     }
     this.observeForever(observer)
@@ -61,3 +61,4 @@ fun <T> LiveData<T>.getOrAwaitValue(
     @Suppress("UNCHECKED_CAST")
     return data as T
 }
+
